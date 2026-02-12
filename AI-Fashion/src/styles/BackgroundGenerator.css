@@ -1,0 +1,12 @@
+.background-generator { padding: 2rem 0; }
+.background-generator h3 { font-size: 1.8rem; font-weight: 700; color: #0f172a; margin-bottom: 2rem; text-align: center; }
+.bg-section { margin-bottom: 3rem; }
+.bg-section h4 { font-size: 1.3rem; font-weight: 600; color: #0f172a; margin-bottom: 1.5rem; }
+.bg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1.5rem; }
+.bg-card { background: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 1rem; text-align: center; cursor: pointer; transition: all 0.3s; }
+.bg-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(102,126,234,0.2); border-color: #667eea; }
+.bg-card.selected { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.2); }
+.bg-preview { width: 100%; height: 80px; border-radius: 8px; margin-bottom: 0.8rem; border: 1px solid #e2e8f0; }
+.bg-preview-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+.bg-card p { font-size: 0.9rem; font-weight: 500; color: #0f172a; }
+.bg-summary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 2rem; border-radius: 12px; text-align: center; font-weight: 600; margin-top: 2rem; }

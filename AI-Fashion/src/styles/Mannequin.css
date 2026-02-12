@@ -1,0 +1,369 @@
+/* Mannequin Page Styles */
+.mannequin-page {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: white;
+  min-height: 100vh;
+  padding-top: 5rem;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Hero Section */
+.mannequin-hero {
+  background: white;
+  padding: 5rem 2rem;
+}
+
+.mannequin-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.mannequin-hero-text {
+  flex: 1;
+  animation: slideInLeft 0.8s ease;
+}
+
+.mannequin-hero-text h1 {
+  font-size: 3.125rem;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.mannequin-hero-text p {
+  font-size: 1rem;
+  color: #666;
+  max-width: 420px;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.mannequin-hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.mannequin-hero-image {
+  flex: 1;
+  animation: slideInRight 0.8s ease;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+/* How Section */
+.mannequin-how-section {
+  background: #f2f2f2;
+  padding: 5rem 2rem;
+}
+
+.mannequin-section-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+}
+
+.mannequin-section-header h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.75rem;
+}
+
+.mannequin-section-header p {
+  font-size: 0.9375rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.mannequin-steps {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.mannequin-step {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  opacity: 0;
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.mannequin-step:nth-child(1) { animation-delay: 0.2s; }
+.mannequin-step:nth-child(2) { animation-delay: 0.4s; }
+.mannequin-step:nth-child(3) { animation-delay: 0.6s; }
+
+.mannequin-step.reverse {
+  flex-direction: row-reverse;
+  animation: slideInRight 0.8s ease forwards;
+}
+
+.mannequin-step-text {
+  flex: 1;
+}
+
+.mannequin-step-number {
+  font-size: 4.25rem;
+  font-weight: 300;
+  color: #d0d0d0;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.mannequin-step-text h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.mannequin-step-text p {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.mannequin-step-image {
+  flex: 1;
+}
+
+.mannequin-step-image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.mannequin-result-header {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.mannequin-result-label {
+  font-size: 0.75rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.mannequin-result-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.mannequin-result-header p {
+  font-size: 0.9375rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Carousel */
+.mannequin-carousel-section {
+  background: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.mannequin-carousel-section h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.mannequin-carousel-section > p {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.mannequin-carousel-container {
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.mannequin-carousel-track {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.mannequin-carousel-card {
+  flex-shrink: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mannequin-carousel-card img {
+  width: 200px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.mannequin-carousel-nav {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mannequin-carousel-nav button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mannequin-carousel-nav button:hover {
+  background: #f5f5f5;
+  transform: scale(1.1);
+}
+
+/* Stats Banner */
+.mannequin-stats-banner {
+  background: #1f1f1f;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.mannequin-stats-banner h3 {
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.mannequin-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mannequin-stat-number {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.mannequin-stat-label {
+  font-size: 0.8125rem;
+  color: #999;
+}
+
+/* Transform CTA */
+.mannequin-transform-cta {
+  background: #f0f0f0;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.mannequin-transform-cta h2 {
+  font-size: 3.125rem;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.2;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.mannequin-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mannequin-hero-content {
+    flex-direction: column;
+  }
+
+  .mannequin-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .mannequin-step,
+  .mannequin-step.reverse {
+    flex-direction: column;
+  }
+
+  .mannequin-stats-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .mannequin-transform-cta h2 {
+    font-size: 2rem;
+  }
+
+  .mannequin-hero-buttons,
+  .mannequin-cta-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Dark Theme */
+.dark-theme .mannequin-page {
+  background: #1e293b;
+}
+
+.dark-theme .mannequin-hero,
+.dark-theme .mannequin-carousel-section {
+  background: #1e293b;
+}
+
+.dark-theme .mannequin-how-section,
+.dark-theme .mannequin-transform-cta {
+  background: #334155;
+}
+
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3 {
+  color: white;
+}
+
+.dark-theme p {
+  color: #cbd5e1;
+}

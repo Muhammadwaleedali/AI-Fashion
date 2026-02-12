@@ -1,0 +1,643 @@
+/* Fashion AI Exact Style */
+
+.hero-botika {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem 2rem 4rem;
+  text-align: center;
+  background: white;
+}
+
+.hero-content-botika {
+  max-width: 800px;
+}
+
+.hero-content-botika h1 {
+  font-size: 4.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.hero-content-botika p {
+  font-size: 1.5rem;
+  color: #64748b;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.btn-hero-dark {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 1.1rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-hero-dark:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+}
+
+.hero-note {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.btn-nav-dark {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-nav-dark:hover {
+  background: #1e293b;
+}
+
+/* Demo Section */
+.demo-section {
+  padding: 5rem 2rem;
+  background: #fafafa;
+}
+
+.demo-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.demo-header h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.demo-header p {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+/* How it Works */
+.how-works {
+  padding: 5rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.how-works h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 3rem;
+}
+
+.how-works-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.how-step {
+  text-align: center;
+}
+
+.step-num {
+  width: 60px;
+  height: 60px;
+  background: #0f172a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.how-step h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.8rem;
+}
+
+.how-step p {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Features Simple */
+.features-simple {
+  padding: 5rem 2rem;
+  background: #fafafa;
+  text-align: center;
+}
+
+.features-simple h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 3rem;
+}
+
+.features-simple-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+}
+
+.feature-simple {
+  text-align: center;
+}
+
+.feature-simple-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-simple h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.feature-simple p {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* Use Cases */
+.use-cases {
+  padding: 5rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.use-cases h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 3rem;
+}
+
+.use-cases-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.use-case {
+  background: #fafafa;
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.use-case h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.8rem;
+}
+
+.use-case p {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Examples Section */
+.examples-section {
+  padding: 5rem 2rem;
+  background: #fafafa;
+  text-align: center;
+}
+
+.examples-section h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.examples-subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-bottom: 3rem;
+}
+
+.examples-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.example-item {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.example-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Testimonials Fashion AI */
+.testimonials-botika {
+  padding: 5rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.testimonials-botika h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 3rem;
+}
+
+.testimonials-botika-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-botika {
+  background: #fafafa;
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.testimonial-botika p {
+  font-size: 1.05rem;
+  color: #0f172a;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author-botika {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.testimonial-author-botika strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.testimonial-author-botika span {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 5rem 2rem;
+  background: #fafafa;
+  text-align: center;
+}
+
+.faq-section h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 3rem;
+}
+
+.faq-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.faq-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.faq-item h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.8rem;
+}
+
+.faq-item p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Pricing Simple */
+.pricing-simple {
+  padding: 5rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.pricing-simple h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 3rem;
+}
+
+.pricing-simple-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.pricing-simple-card {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: left;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.pricing-simple-card:hover {
+  border-color: #0f172a;
+  transform: translateY(-5px);
+}
+
+.featured-simple {
+  border-color: #0f172a;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.pricing-simple-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.price-simple {
+  margin-bottom: 2rem;
+}
+
+.amount-simple {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.period-simple {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.pricing-simple-card ul {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.pricing-simple-card li {
+  padding: 0.6rem 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.btn-pricing-simple {
+  width: 100%;
+  background: white;
+  color: #0f172a;
+  border: 2px solid #e2e8f0;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-pricing-simple:hover {
+  border-color: #0f172a;
+}
+
+.btn-pricing-simple-dark {
+  width: 100%;
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-pricing-simple-dark:hover {
+  background: #1e293b;
+}
+
+/* CTA Simple */
+.cta-simple {
+  padding: 5rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.cta-simple h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.cta-simple p {
+  font-size: 1.2rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.btn-cta-dark {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 1.1rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-cta-dark:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+}
+
+/* Footer Simple */
+.footer-simple {
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  padding: 3rem 2rem 2rem;
+}
+
+.footer-simple-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-simple-section h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.footer-simple-section h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.footer-simple-section p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.footer-simple-section a {
+  display: block;
+  color: #64748b;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-simple-section a:hover {
+  color: #0f172a;
+}
+
+.footer-simple-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.footer-simple-bottom p {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .hero-content-botika h1 {
+    font-size: 3rem;
+  }
+
+  .how-works-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-simple-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .examples-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-botika-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-simple-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-simple-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-content-botika h1 {
+    font-size: 2.5rem;
+  }
+
+  .features-simple-container {
+    grid-template-columns: 1fr;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+}

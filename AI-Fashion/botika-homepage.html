@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion AI - AI Generated Models for Fashion</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;background:#fff;color:#111}
+button{cursor:pointer;border:none;font-family:inherit}
+a{text-decoration:none;color:inherit}
+.btn-primary{background:#111;color:#fff;border-radius:6px;padding:13px 26px;font-size:14px;font-weight:500;transition:all .2s ease}
+.btn-primary:hover{background:#333}
+.btn-secondary{background:#fff;color:#222;border:1px solid #ccc;border-radius:6px;padding:13px 26px;font-size:14px;font-weight:500;transition:all .2s ease}
+.btn-secondary:hover{background:#f5f5f5}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.hero{background:#f0f0f0;min-height:520px;display:flex;align-items:center;justify-content:center;padding:80px 60px}
+.hero-container{display:flex;max-width:1200px;width:100%;gap:60px;align-items:center}
+.hero-left{flex:0 0 45%}
+.hero-small{font-size:14px;color:#888;font-weight:400;margin-bottom:8px}
+.hero-h1{font-size:56px;font-weight:700;line-height:1.1;margin-bottom:16px;opacity:0;transform:translateY(15px);transition:opacity .6s ease,transform .6s ease}
+.hero-h1.loaded{opacity:1;transform:translateY(0)}
+.hero-p{font-size:15px;color:#666;max-width:440px;line-height:1.6;margin-bottom:32px}
+.hero-buttons{display:flex;gap:12px}
+.hero-right{flex:0 0 55%}
+.hero-img{width:100%;height:520px;object-fit:cover}
+.brands{background:#1f1f1f;padding:28px 60px;text-align:center}
+.brands-title{color:#fff;font-size:15px;font-weight:400;margin-bottom:20px}
+.brands-logos{display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap}
+.brands-logos span{color:#888;font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:500}
+.brands-logos .logo-icon{width:30px;height:30px;border:1px solid #555;display:inline-block}
+.platform{background:#fff;padding:70px 60px;text-align:center}
+.platform-h2{font-size:40px;color:#111;font-weight:400;margin-bottom:20px}
+.platform-card{margin:36px auto 0;max-width:950px;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);position:relative}
+.platform-img{width:100%;height:480px;object-fit:cover}
+.platform-inset{position:absolute;left:8%;top:25%;width:200px;height:240px;border:3px solid #fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.platform-inset img{width:100%;height:100%;object-fit:cover}
+.platform-tabs{position:absolute;right:60px;top:50%;transform:translateY(-50%);text-align:right}
+.platform-tab{color:#fff;font-size:24px;margin-bottom:12px;cursor:pointer;transition:all .3s ease;opacity:.6}
+.platform-tab.active{font-weight:700;font-size:28px;opacity:1}
+.results{background:#fff;padding:70px 60px;text-align:center}
+.results-h2{font-size:42px;margin-bottom:10px}
+.results-sub{color:#666;font-size:15px;margin-bottom:24px}
+.results-buttons{display:flex;justify-content:center;gap:12px;margin-bottom:48px}
+.carousel{display:flex;justify-content:center;align-items:center;gap:20px;position:relative;height:600px}
+.carousel-card{border-radius:12px;overflow:hidden;position:relative;transition:all .4s ease}
+.carousel-card.side{width:240px;opacity:.4;z-index:1}
+.carousel-card.center{width:480px;box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:3}
+.carousel-card img{width:100%;height:580px;object-fit:cover}
+.carousel-label{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;letter-spacing:2px}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
+.carousel-dot{width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all .3s ease}
+.carousel-dot.active{background:#111}
+.carousel-dot:not(.active){background:transparent;border:1px solid #ccc}
+.reimagine{background:#fff;padding:70px 60px}
+.reimagine-header{text-align:center;margin-bottom:48px}
+.reimagine-h2{font-size:40px;margin-bottom:10px}
+.reimagine-sub{color:#666;font-size:14px;max-width:540px;margin:0 auto;line-height:1.6}
+.reimagine-content{display:flex;max-width:1100px;margin:0 auto;gap:60px;align-items:center}
+.reimagine-left{flex:0 0 480px}
+.product-card{background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);overflow:hidden}
+.product-header{background:#111;height:40px}
+.product-body{display:flex}
+.product-thumbs{width:130px;padding:10px;background:#f9f9f9}
+.product-thumb{width:120px;height:80px;margin-bottom:8px;border-radius:4px;overflow:hidden;border:2px solid transparent}
+.product-thumb.active{border-color:#4a90e2}
+.product-thumb img{width:100%;height:100%;object-fit:cover}
+.product-main{flex:1;padding:16px;position:relative}
+.product-main img{width:100%;height:360px;object-fit:cover;border-radius:8px}
+.product-badge{position:absolute;top:24px;right:24px;background:#e74c3c;color:#fff;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700}
+.product-controls{margin-top:16px}
+.product-controls label{display:block;font-size:12px;color:#666;margin-bottom:6px}
+.color-swatch{width:20px;height:20px;background:#4a90e2;border-radius:50%;display:inline-block;margin-bottom:12px}
+.size-buttons{display:flex;gap:8px;margin-bottom:12px}
+.size-btn{padding:6px 14px;border:1px solid #ccc;border-radius:4px;font-size:12px;background:#fff;transition:all .2s ease}
+.size-btn.active{background:#111;color:#fff;border-color:#111}
+.quantity-row{display:flex;gap:12px;align-items:center}
+.quantity{display:flex;align-items:center;gap:12px;border:1px solid #ccc;padding:6px 12px;border-radius:4px}
+.add-cart{background:#111;color:#fff;padding:10px 24px;border-radius:4px;font-size:13px;flex:1}
+.reimagine-right{flex:1;padding-left:20px}
+.reimagine-h3{font-size:28px;font-weight:700;margin-bottom:12px}
+.reimagine-text{color:#666;font-size:14px;line-height:1.6;max-width:360px;margin-bottom:24px}
+.stat-row{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.stat-big{font-size:42px;font-weight:700}
+.stat-small{font-size:14px;color:#666;max-width:280px}
+.reimagine-right hr{border:none;border-top:1px solid #eee;margin:20px 0}
+.brand-name{font-size:18px;font-weight:700;letter-spacing:1px;margin-bottom:8px}
+.case-link{color:#666;font-size:13px;cursor:pointer;transition:all .2s ease}
+.case-link:hover{text-decoration:underline}
+.faster{background:#fff;padding:70px 60px}
+.faster-content{display:flex;max-width:1100px;margin:0 auto;gap:60px;align-items:center}
+.faster-left{flex:0 0 45%}
+.faster-h3{font-size:32px;font-weight:700;margin-bottom:12px}
+.faster-text{color:#666;font-size:14px;line-height:1.6;max-width:380px;margin-bottom:24px}
+.faster-stat{font-size:50px;font-weight:700;font-style:italic}
+.faster-right{flex:1}
+.landing-card{border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);background:#a8d5cc;height:340px;position:relative;padding:40px}
+.landing-card .cart-icon{position:absolute;top:20px;right:20px;font-size:20px}
+.landing-title{color:#fff;font-size:22px;font-weight:700;text-transform:uppercase;max-width:280px;line-height:1.3;margin-bottom:24px}
+.shop-btn{background:transparent;border:2px solid #fff;color:#fff;padding:12px 40px;border-radius:30px;font-size:14px;font-weight:600;transition:all .2s ease}
+.shop-btn:hover{background:#fff;color:#a8d5cc}
+.landing-img{position:absolute;right:0;bottom:0;width:480px;height:340px;object-fit:cover}
+.editorial{width:100%;height:580px;position:relative;overflow:hidden}
+.editorial img{width:100%;height:100%;object-fit:cover}
+.notification{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.15);padding:14px;width:240px;text-align:center}
+.notification .check{color:#27ae60;font-size:24px;margin-bottom:8px}
+.notification-title{font-size:14px;font-weight:700;margin-bottom:12px}
+.chat-bubble{background:#f0f0f0;border-radius:16px;padding:10px;display:flex;align-items:center;gap:8px;font-size:11px;color:#666}
+.chat-avatar{width:20px;height:20px;background:#ccc;border-radius:50%}
+.creator{display:flex;min-height:520px}
+.creator-left{flex:1;background:#1f1f1f;padding:70px 60px;display:flex;flex-direction:column;justify-content:center}
+.creator-h2{color:#fff;font-size:26px;font-weight:500;line-height:1.35;margin-bottom:10px}
+.creator-text{color:#aaa;font-size:13px;line-height:1.6;max-width:280px;margin-bottom:24px}
+.creator-right{flex:1}
+.creator-right img{width:100%;height:100%;min-height:520px;object-fit:cover}
+.cta{background:#f0f0f0;padding:80px 60px;text-align:center}
+.cta-h2{font-size:50px;font-weight:700;line-height:1.2;max-width:800px;margin:0 auto 32px}
+.cta-buttons{display:flex;justify-content:center;gap:12px}
+.footer{background:#2a2a2a;color:#fff;padding:60px 80px}
+.footer-content{display:flex;gap:80px;margin-bottom:40px}
+.footer-col{flex:1}
+.footer-logo{font-size:17px;font-weight:700;letter-spacing:1px;margin-bottom:14px}
+.footer-desc{color:#999;font-size:13px;line-height:1.7;max-width:220px}
+.footer-link{color:#999;font-size:14px;display:block;margin-bottom:10px;transition:all .2s ease}
+.footer-link:hover{color:#fff}
+.footer-social{display:flex;gap:10px;margin-top:18px}
+.social-icon{width:30px;height:30px;border:1px solid #555;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;transition:all .2s ease}
+.social-icon:hover{border-color:#999;color:#fff}
+.footer-bottom{border-top:1px solid #3a3a3a;padding-top:20px;text-align:center;color:#666;font-size:12px}
+@media(max-width:768px){
+.hero-container{flex-direction:column;padding:40px 20px}
+.hero-left,.hero-right{flex:1 1 100%}
+.hero-h1{font-size:38px}
+.hero-img{height:350px}
+.brands-logos{gap:24px}
+.platform-tabs{display:none}
+.carousel{height:auto}
+.carousel-card.side{display:none}
+.carousel-card.center{width:100%}
+.reimagine-content,.faster-content{flex-direction:column}
+.reimagine-left,.faster-left{flex:1 1 100%}
+.creator{flex-direction:column}
+.cta-h2{font-size:34px}
+.footer{padding:40px 20px}
+.footer-content{flex-wrap:wrap;gap:40px}
+}
+</style>
+</head>
+<body>
+
+<!-- SECTION 1: HERO -->
+<section class="hero">
+<div class="hero-container">
+<div class="hero-left">
+<div class="hero-small">AI generated models</div>
+<h1 class="hero-h1">trusted by world-class fashion brands</h1>
+<p class="hero-p">Fashion AI helps leading brands create authentic, on-brand imagery at scale, giving teams creative freedom, consistency and full control.</p>
+<div class="hero-buttons">
+<button class="btn-primary">Get Started</button>
+<button class="btn-secondary">Book a Call</button>
+</div>
+</div>
+<div class="hero-right">
+<img src="https://picsum.photos/seed/denimlook/620/520" alt="Fashion model" class="hero-img">
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: BRANDS -->
+<section class="brands">
+<div class="brands-title">Top fashion creative teams choose Fashion AI</div>
+<div class="brands-logos">
+<span>ERVED</span>
+<span>PERRY ELLIS</span>
+<span>HELIOT EMIL ™</span>
+<span class="logo-icon"></span>
+<span>BLVCK</span>
+<span>NIL+MON</span>
+<span style="letter-spacing:0">❋ coco</span>
+<span style="font-size:12px">🐎 JORDACHE</span>
+</div>
+</section>
+
+<!-- SECTION 3: PLATFORM -->
+<section class="platform reveal">
+<h2 class="platform-h2">One platform for every fashion workflow</h2>
+<button class="btn-secondary" style="border-radius:20px;padding:10px 28px">Learn More</button>
+<div class="platform-card">
+<img src="https://picsum.photos/seed/pinkshirt/950/480" alt="Model" class="platform-img" id="platformImg">
+<div class="platform-inset">
+<img src="https://picsum.photos/seed/pinkshirtbefore/200/240" alt="Before" id="insetImg">
+</div>
+<div class="platform-tabs">
+<div class="platform-tab active" data-tab="0">On model</div>
+<div class="platform-tab" data-tab="1">Flat lay</div>
+<div class="platform-tab" data-tab="2">Mannequin</div>
+<div class="platform-tab" data-tab="3">Video</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 4: RESULTS -->
+<section class="results reveal">
+<h2 class="results-h2">Real brands, real results.</h2>
+<p class="results-sub">See how AI-generated models for fashion make a difference.</p>
+<div class="results-buttons">
+<button class="btn-primary">Get Started</button>
+<button class="btn-secondary">Book a Call</button>
+</div>
+<div class="carousel">
+<div class="carousel-card side">
+<img src="https://picsum.photos/seed/malemodel1/340/460" alt="Model">
+</div>
+<div class="carousel-card center">
+<img src="https://picsum.photos/seed/hoodiemodel/480/580" alt="Model" id="centerImg">
+<div class="carousel-label">HELIOT EMIL ™</div>
+</div>
+<div class="carousel-card side">
+<img src="https://picsum.photos/seed/asianmodel/340/460" alt="Model">
+</div>
+</div>
+<div class="carousel-dots">
+<div class="carousel-dot active" data-slide="0"></div>
+<div class="carousel-dot" data-slide="1"></div>
+</div>
+</section>
+
+<!-- SECTION 5: REIMAGINE -->
+<section class="reimagine reveal">
+<div class="reimagine-header">
+<h2 class="reimagine-h2">Reimagine photoshoots with AI generated models</h2>
+<p class="reimagine-sub">Create high-end fashion imagery with AI generated models. Polished results, effortless workflow & a team ready to guide your every step.</p>
+</div>
+<div class="reimagine-content">
+<div class="reimagine-left">
+<div class="product-card">
+<div class="product-header"></div>
+<div class="product-body">
+<div class="product-thumbs">
+<div class="product-thumb active"><img src="https://picsum.photos/seed/thumb1/120/80" alt="Thumb"></div>
+<div class="product-thumb"><img src="https://picsum.photos/seed/thumb2/120/80" alt="Thumb"></div>
+<div class="product-thumb"><img src="https://picsum.photos/seed/thumb3/120/80" alt="Thumb"></div>
+</div>
+<div class="product-main">
+<img src="https://picsum.photos/seed/varsjacket/320/360" alt="Product">
+<div class="product-badge">SALE</div>
+<div class="product-controls">
+<label>Select Colors</label>
+<div class="color-swatch"></div>
+<label>Choose Size</label>
+<div class="size-buttons">
+<button class="size-btn active">Small</button>
+<button class="size-btn">Medium</button>
+<button class="size-btn">Large</button>
+</div>
+<div class="quantity-row">
+<div class="quantity"><span>−</span><span>1</span><span>+</span></div>
+<button class="add-cart">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="reimagine-right">
+<h3 class="reimagine-h3">Spend less, produce more</h3>
+<p class="reimagine-text">Create studio-quality fashion shots without inflating budgets. AI generated models give you the same professional look, minus the production overhead.</p>
+<div class="stat-row">
+<div class="stat-big">-90%</div>
+<div class="stat-small">Jordache cut production costs and saved thousands with Fashion AI.</div>
+</div>
+<hr>
+<div class="brand-name">🐎 JORDACHE</div>
+<div class="case-link">Read case study →</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 6: FASTER -->
+<section class="faster reveal">
+<div class="faster-content">
+<div class="faster-left">
+<h3 class="faster-h3">Move faster. Launch smarter</h3>
+<p class="faster-text">Accelerate your production cycles and deliver new collections in days. Fashion teams can now update looks, refresh images, and move faster than ever without sacrificing quality.</p>
+<div class="stat-row">
+<div class="faster-stat">40X</div>
+<div class="stat-small">JUAN & ME cut image production turnaround time from 6 weeks to 24 hours</div>
+</div>
+<hr>
+<div class="brand-name">JUAN & ME</div>
+<div class="case-link">Read case study →</div>
+</div>
+<div class="faster-right">
+<div class="landing-card">
+<div class="cart-icon">🛒</div>
+<div class="landing-title">FIND CLOTHES THAT MATCH YOUR STYLE</div>
+<button class="shop-btn">Shop Now</button>
+<img src="https://picsum.photos/seed/pinksweater/480/340" alt="Model" class="landing-img">
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 7: EDITORIAL -->
+<section class="editorial">
+<img src="https://picsum.photos/seed/pinkdress/1400/580" alt="Editorial">
+<div class="notification">
+<div class="check">✅</div>
+<div class="notification-title">All set! Your image is fixed</div>
+<div class="chat-bubble">
+<div class="chat-avatar"></div>
+<span>Could you please fix the model's shoes? Thanks</span>
+<span>➤</span>
+</div>
+</div>
+</section>
+
+<!-- SECTION 8: CREATOR -->
+<section class="creator reveal">
+<div class="creator-left">
+<h2 class="creator-h2">Fashion AI Creator Program</h2>
+<p class="creator-text">Ready to showcase what's possible with AI fashion? Create high-end fashion visuals and grow your digital presence with Fashion AI.</p>
+<button class="btn-secondary">Apply Here</button>
+</div>
+<div class="creator-right">
+<img src="https://picsum.photos/seed/bridgemodel/780/520" alt="Creator">
+</div>
+</section>
+
+<!-- SECTION 9: CTA -->
+<section class="cta reveal">
+<h2 class="cta-h2">Transform photoshoots and get flawless results in no time</h2>
+<div class="cta-buttons">
+<button class="btn-primary">Get Started</button>
+<button class="btn-secondary">Book a Call</button>
+</div>
+</section>
+
+<!-- SECTION 10: FOOTER -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-col">
+<div class="footer-logo">⚡ FASHION AI</div>
+<p class="footer-desc">Fashion AI utilizes Generative AI to enhance online fashion stores by introducing AI-generated models and unlimited professional fashion photos. This technology helps retailers engage customers, expand into new markets, and improve conversion rates.</p>
+</div>
+<div class="footer-col">
+<a href="#" class="footer-link">About us</a>
+<a href="#" class="footer-link">Help center</a>
+<a href="#" class="footer-link">Blog</a>
+</div>
+<div class="footer-col"></div>
+<div class="footer-col">
+<a href="#" class="footer-link">Contact us</a>
+<div class="footer-social">
+<div class="social-icon">IG</div>
+<div class="social-icon">in</div>
+<div class="social-icon">▶</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 Fashion AI, all rights reserved. | Terms of service | Privacy policy | Your Privacy Choices
+</div>
+</footer>
+
+<script>
+// Hero fade-in animation
+window.addEventListener('load',()=>{
+setTimeout(()=>{
+document.querySelector('.hero-h1').classList.add('loaded');
+},200);
+});
+
+// Platform tabs
+const tabs=document.querySelectorAll('.platform-tab');
+const platformImg=document.getElementById('platformImg');
+const insetImg=document.getElementById('insetImg');
+const tabImages=[
+{main:'pinkshirt',inset:'pinkshirtbefore'},
+{main:'flatlay1',inset:'flatlay2'},
+{main:'mannequin1',inset:'mannequin2'},
+{main:'video1',inset:'video2'}
+];
+tabs.forEach(tab=>{
+tab.addEventListener('click',()=>{
+tabs.forEach(t=>t.classList.remove('active'));
+tab.classList.add('active');
+const idx=parseInt(tab.dataset.tab);
+platformImg.src=`https://picsum.photos/seed/${tabImages[idx].main}/950/480`;
+insetImg.src=`https://picsum.photos/seed/${tabImages[idx].inset}/200/240`;
+});
+});
+
+// Carousel
+const dots=document.querySelectorAll('.carousel-dot');
+const centerImg=document.getElementById('centerImg');
+const carouselImages=['hoodiemodel','malemodel2','asianmodel'];
+let currentSlide=0;
+dots.forEach(dot=>{
+dot.addEventListener('click',()=>{
+dots.forEach(d=>d.classList.remove('active'));
+dot.classList.add('active');
+currentSlide=parseInt(dot.dataset.slide);
+centerImg.src=`https://picsum.photos/seed/${carouselImages[currentSlide]}/480/580`;
+});
+});
+setInterval(()=>{
+currentSlide=(currentSlide+1)%2;
+dots.forEach(d=>d.classList.remove('active'));
+dots[currentSlide].classList.add('active');
+centerImg.src=`https://picsum.photos/seed/${carouselImages[currentSlide]}/480/580`;
+},4000);
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('active');
+}
+});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Button hover effects (handled by CSS)
+</script>
+
+</body>
+</html>

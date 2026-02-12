@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get to Market Faster - Fashion AI</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;background:#fff;color:#111}
+button{cursor:pointer;border:none;font-family:inherit}
+a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #eee;height:56px;transition:box-shadow .2s ease}
+.navbar.scrolled{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.nav-container{max-width:1400px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:6px;font-weight:700;font-size:16px;letter-spacing:.5px}
+.nav-logo-icon{width:16px;height:16px;background:#111;border-radius:2px}
+.nav-links{display:flex;gap:32px;font-size:14px;color:#333}
+.nav-links a{transition:all .2s ease}
+.nav-links a:hover{text-decoration:underline}
+.nav-links .active{color:#111;font-weight:600;text-decoration:underline}
+.nav-dropdown{position:relative}
+.dropdown-menu{position:absolute;top:40px;left:-20px;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.12);padding:12px 0;min-width:200px;opacity:0;visibility:hidden;transition:opacity .15s ease}
+.nav-dropdown:hover .dropdown-menu{opacity:1;visibility:visible}
+.dropdown-item{display:block;padding:10px 20px;font-size:14px;color:#333;transition:background .2s ease}
+.dropdown-item:hover{background:#f5f5f5}
+.dropdown-item.active{font-weight:600;border-left:3px solid #111}
+.nav-actions{display:flex;align-items:center;gap:20px}
+.nav-contact{color:#666;font-size:14px}
+.btn-nav{background:#111;color:#fff;border-radius:6px;padding:10px 22px;font-size:14px;transition:all .2s ease}
+.btn-nav:hover{background:#333}
+.btn-primary{background:#111;color:#fff;border-radius:6px;padding:13px 26px;font-size:14px;font-weight:500;transition:all .2s ease}
+.btn-primary:hover{background:#333}
+.btn-secondary{background:#fff;color:#222;border:1px solid #ccc;border-radius:6px;padding:13px 26px;font-size:14px;font-weight:500;transition:all .2s ease}
+.btn-secondary:hover{background:#f5f5f5}
+.btn-dark{background:#333;color:#fff;border-radius:6px;padding:11px 22px;font-size:14px;transition:all .2s ease}
+.btn-dark:hover{background:#444}
+.btn-outline{background:transparent;color:#333;border:1px solid #ccc;border-radius:6px;padding:11px 22px;font-size:14px;transition:all .2s ease}
+.btn-outline:hover{background:#f5f5f5}
+.hero{background:#fff;padding:90px 80px;display:flex;max-width:1200px;margin:0 auto;align-items:center;gap:40px}
+.hero-left{flex:0 0 45%}
+.hero-h1{font-size:52px;font-weight:700;line-height:1.1;margin-bottom:16px}
+.hero-p{font-size:15px;color:#666;max-width:420px;line-height:1.6;margin-bottom:32px}
+.hero-buttons{display:flex;gap:12px}
+.hero-right{flex:0 0 52%;display:flex;gap:6px}
+.hero-img{width:225px;height:320px;border-radius:10px;object-fit:cover}
+.section{background:#f0f0f0;padding:80px;opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease}
+.section.visible{opacity:1;transform:translateY(0)}
+.section-content{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:60px}
+.section-left{flex:0 0 55%}
+.section-right{flex:0 0 40%}
+.section-h2{font-size:36px;font-weight:700;margin-bottom:12px}
+.section-p{font-size:15px;color:#666;max-width:340px;line-height:1.6;margin-bottom:28px}
+.section-buttons{display:flex;gap:12px}
+.feature-card{border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.feature-card-split{display:flex;width:600px}
+.feature-card-split img{width:280px;height:380px;object-fit:cover}
+.feature-card-split img:first-child{border-right:1px solid #eee}
+.feature-card-ui{background:#fff;padding:20px;width:600px;border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.ui-toolbar{background:#f5f5f5;height:30px;border-radius:6px;margin-bottom:16px}
+.ui-photos{display:flex;gap:8px;margin-bottom:12px}
+.ui-photos img{width:160px;height:200px;border-radius:8px;object-fit:cover}
+.ui-bar{background:#f0f0f0;height:12px;border-radius:6px;margin-bottom:8px}
+.feature-mosaic{display:flex;width:600px;border-radius:14px;overflow:hidden}
+.mosaic-left{width:290px}
+.mosaic-left img{width:100%;height:380px;object-fit:cover}
+.mosaic-right{width:290px;display:flex;flex-direction:column}
+.mosaic-right img{width:100%;height:188px;object-fit:cover}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;width:620px;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.grid-cell{position:relative}
+.grid-cell img{width:100%;height:100%;object-fit:cover}
+.grid-main{grid-row:1;grid-column:1;height:310px}
+.grid-crop{grid-row:1;grid-column:2;height:310px}
+.grid-store{grid-row:2;grid-column:1;background:#ddd;padding:30px;display:flex;flex-direction:column;align-items:flex-start;height:200px;position:relative}
+.grid-store h3{color:#fff;font-size:16px;text-transform:uppercase;margin-bottom:16px;max-width:180px;line-height:1.3}
+.grid-store button{background:transparent;border:1px solid #fff;color:#fff;border-radius:20px;padding:8px 24px;font-size:12px}
+.grid-store-img{position:absolute;right:10px;bottom:10px;width:80px;height:120px;border-radius:6px;object-fit:cover}
+.grid-icons{position:absolute;top:10px;right:10px;display:flex;gap:8px;font-size:14px;color:#666}
+.grid-bottom{grid-row:2;grid-column:2;height:200px}
+.dot-overlay{position:absolute;top:10px;left:10px;width:20px;height:20px;background:#111;border-radius:50%}
+.zoom-overlay{position:absolute;top:10px;right:10px;background:#ddd;border-radius:20px;padding:4px 10px;font-size:11px;color:#666}
+.banner{display:flex;min-height:520px}
+.banner-left{flex:1;background:#1f1f1f;padding:80px 60px;display:flex;flex-direction:column;justify-content:center}
+.banner-h2{color:#fff;font-size:26px;font-weight:500;line-height:1.35;margin-bottom:10px}
+.banner-text{color:#aaa;font-size:13px;max-width:280px;line-height:1.6;margin-bottom:24px}
+.banner-buttons{display:flex;gap:10px}
+.btn-banner-light{background:#fff;color:#111;border-radius:6px;padding:10px 20px;font-size:13px;transition:all .2s ease}
+.btn-banner-light:hover{background:#f5f5f5}
+.btn-banner-dark{background:transparent;border:1px solid #555;color:#eee;border-radius:6px;padding:10px 20px;font-size:13px;transition:all .2s ease}
+.btn-banner-dark:hover{border-color:#888}
+.banner-right{flex:1}
+.banner-right img{width:100%;height:100%;min-height:520px;object-fit:cover}
+.cta{background:#f0f0f0;padding:90px 60px;text-align:center}
+.cta-h2{font-size:54px;font-weight:700;line-height:1.15;max-width:800px;margin:0 auto 36px}
+.cta-buttons{display:flex;justify-content:center;gap:14px}
+.btn-cta{background:#111;color:#fff;border-radius:6px;padding:14px 30px;font-size:15px;transition:all .2s ease}
+.btn-cta:hover{background:#333}
+.footer{background:#2a2a2a;color:#fff;padding:60px 80px}
+.footer-content{display:flex;gap:80px;margin-bottom:40px}
+.footer-col{flex:1}
+.footer-logo{display:flex;align-items:center;gap:6px;font-weight:700;font-size:17px;letter-spacing:.5px;margin-bottom:14px}
+.footer-logo-icon{width:16px;height:16px;background:#fff;border-radius:2px}
+.footer-desc{color:#999;font-size:13px;line-height:1.7;max-width:220px}
+.footer-link{color:#999;font-size:14px;display:block;margin-bottom:10px;transition:color .2s ease}
+.footer-link:hover{color:#fff}
+.footer-social{display:flex;gap:10px;margin-top:18px}
+.social-icon{width:30px;height:30px;border:1px solid #555;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;transition:all .2s ease}
+.social-icon:hover{border-color:#999;color:#fff}
+.footer-bottom{border-top:1px solid #3a3a3a;padding-top:20px;text-align:center;color:#666;font-size:12px}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.hamburger span{width:24px;height:2px;background:#111}
+@media(max-width:768px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.hero{flex-direction:column;padding:60px 20px}
+.hero-left{flex:1 1 100%}
+.hero-h1{font-size:36px}
+.hero-right{flex-direction:column;width:100%}
+.hero-img{width:100%;max-width:300px}
+.hero-img:nth-child(3){display:none}
+.section{padding:50px 20px}
+.section-content{flex-direction:column}
+.section-left,.section-right{flex:1 1 100%;width:100%}
+.feature-card-split,.feature-card-ui,.feature-mosaic,.feature-grid{width:100%;max-width:500px}
+.section-h2{font-size:28px}
+.banner{flex-direction:column}
+.cta{padding:60px 20px}
+.cta-h2{font-size:34px}
+.footer{padding:40px 20px}
+.footer-content{flex-wrap:wrap;gap:40px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-logo">
+<div class="nav-logo-icon"></div>
+<span>FASHION AI</span>
+</div>
+<div class="nav-links">
+<a href="#">Product</a>
+<div class="nav-dropdown">
+<a href="#" class="active">Solutions</a>
+<div class="dropdown-menu">
+<a href="#" class="dropdown-item">Cut production costs</a>
+<a href="#" class="dropdown-item active">Get to market faster</a>
+<a href="#" class="dropdown-item">Create editorials</a>
+<a href="#" class="dropdown-item">Increase diversity</a>
+</div>
+</div>
+<a href="#">Resources</a>
+<a href="#">Pricing</a>
+</div>
+<div class="nav-actions">
+<a href="#" class="nav-contact">Contact Us</a>
+<button class="btn-nav">Get Started</button>
+</div>
+<div class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</nav>
+
+<!-- SECTION 1: HERO -->
+<section class="hero">
+<div class="hero-left">
+<h1 class="hero-h1">Get to market faster</h1>
+<p class="hero-p">Reduce production time and release new collections at the speed your business needs.</p>
+<div class="hero-buttons">
+<button class="btn-primary">Get Started</button>
+<button class="btn-secondary">Book a Call</button>
+</div>
+</div>
+<div class="hero-right">
+<img src="https://picsum.photos/seed/redtopwoman/225/320" alt="Model 1" class="hero-img">
+<img src="https://picsum.photos/seed/blondeman/225/320" alt="Model 2" class="hero-img">
+<img src="https://picsum.photos/seed/utilityjacket/225/320" alt="Model 3" class="hero-img">
+</div>
+</section>
+
+<!-- SECTION 2: SKIP THE STUDIO -->
+<section class="section">
+<div class="section-content">
+<div class="section-left">
+<div class="feature-card feature-card-split">
+<img src="https://picsum.photos/seed/denimblonde/280/380" alt="Model">
+<img src="https://picsum.photos/seed/denimflatlay/280/380" alt="Flat Lay">
+</div>
+</div>
+<div class="section-right">
+<h2 class="section-h2">Skip the studio</h2>
+<p class="section-p">Create on model visuals from a single product photo. No studio, styling or casting required.</p>
+<div class="section-buttons">
+<button class="btn-dark">Get Started</button>
+<button class="btn-outline">Book a Call</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3: LAUNCH COLLECTIONS FAST -->
+<section class="section">
+<div class="section-content">
+<div class="section-left">
+<div class="feature-card-ui">
+<div class="ui-toolbar"></div>
+<div class="ui-photos">
+<img src="https://picsum.photos/seed/navyblazerlook/160/200" alt="Look 1">
+<img src="https://picsum.photos/seed/redscarf/160/200" alt="Look 2">
+<img src="https://picsum.photos/seed/rednkitsweater/160/200" alt="Look 3">
+</div>
+<div class="ui-bar"></div>
+<div class="ui-bar" style="width:60%"></div>
+</div>
+</div>
+<div class="section-right">
+<h2 class="section-h2">Launch collections fast</h2>
+<p class="section-p">Get new collections to market quickly. No planning headaches or budget approvals needed.</p>
+<div class="section-buttons">
+<button class="btn-dark">Get Started</button>
+<button class="btn-outline">Book a Call</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 4: CONSISTENCY MADE EASY -->
+<section class="section">
+<div class="section-content">
+<div class="section-left">
+<div class="feature-mosaic">
+<div class="mosaic-left">
+<img src="https://picsum.photos/seed/whitesuit1/290/380" alt="Full Body">
+</div>
+<div class="mosaic-right">
+<img src="https://picsum.photos/seed/whitesuit2/290/188" alt="Upper Body">
+<img src="https://picsum.photos/seed/whitesuit3/290/188" alt="Close Up">
+</div>
+</div>
+</div>
+<div class="section-right">
+<h2 class="section-h2">Consistency made easy</h2>
+<p class="section-p">Stay on brand effortlessly while lowering production costs</p>
+<div class="section-buttons">
+<button class="btn-dark">Get Started</button>
+<button class="btn-outline">Book a Call</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 5: USE CONTENT ANYWHERE -->
+<section class="section">
+<div class="section-content">
+<div class="section-left">
+<div class="feature-grid">
+<div class="grid-cell grid-main">
+<img src="https://picsum.photos/seed/london1990main/290/310" alt="Main">
+<div class="dot-overlay"></div>
+</div>
+<div class="grid-cell grid-crop">
+<img src="https://picsum.photos/seed/london1990crop/290/310" alt="Crop">
+<div class="zoom-overlay">− zoom +</div>
+</div>
+<div class="grid-cell grid-store">
+<h3>WHERE STYLE BECOMES STATEMENT</h3>
+<button>Shop Now</button>
+<img src="https://picsum.photos/seed/london1990small/80/120" alt="Small" class="grid-store-img">
+<div class="grid-icons">🛒 ⚙️</div>
+</div>
+<div class="grid-cell grid-bottom">
+<img src="https://picsum.photos/seed/london1990crop/290/200" alt="Bottom">
+</div>
+</div>
+</div>
+<div class="section-right">
+<h2 class="section-h2">Use content anywhere</h2>
+<p class="section-p">Create once and publish everywhere. No licensing limits or hidden fees.</p>
+<div class="section-buttons">
+<button class="btn-dark">Get Started</button>
+<button class="btn-outline">Book a Call</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 6: BANNER -->
+<section class="banner">
+<div class="banner-left">
+<h2 class="banner-h2">Fashion AI is your own personal fashion studio</h2>
+<p class="banner-text">Snap, upload and get stunning, realistic photos and videos in minutes.</p>
+<div class="banner-buttons">
+<button class="btn-banner-light">Get Started</button>
+<button class="btn-banner-dark">Book a Call</button>
+</div>
+</div>
+<div class="banner-right">
+<img src="https://picsum.photos/seed/studiobanner/780/520" alt="Studio">
+</div>
+</section>
+
+<!-- SECTION 7: CTA -->
+<section class="cta">
+<h2 class="cta-h2">Transform photoshoots and get flawless results in no time</h2>
+<div class="cta-buttons">
+<button class="btn-cta">Get Started</button>
+<button class="btn-secondary">Book a Call</button>
+</div>
+</section>
+
+<!-- SECTION 8: FOOTER -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-col">
+<div class="footer-logo">
+<div class="footer-logo-icon"></div>
+<span>FASHION AI</span>
+</div>
+<p class="footer-desc">Fashion AI utilizes Generative AI to enhance online fashion stores by introducing AI-generated models and unlimited professional fashion photos. This technology helps retailers engage customers, expand into new markets, and improve conversion rates.</p>
+</div>
+<div class="footer-col">
+<a href="#" class="footer-link">About us</a>
+<a href="#" class="footer-link">Help center</a>
+<a href="#" class="footer-link">Blog</a>
+</div>
+<div class="footer-col"></div>
+<div class="footer-col">
+<a href="#" class="footer-link">Contact us</a>
+<div class="footer-social">
+<div class="social-icon">IG</div>
+<div class="social-icon">in</div>
+<div class="social-icon">▶</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 Fashion AI, all rights reserved. | Terms of service | Privacy policy | Your Privacy Choices
+</div>
+</footer>
+
+<script>
+// Navbar scroll shadow
+window.addEventListener('scroll',()=>{
+const nav=document.querySelector('.navbar');
+nav.classList.toggle('scrolled',window.scrollY>10);
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+}
+});
+},{threshold:0.2});
+
+document.querySelectorAll('.section').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
