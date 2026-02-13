@@ -1,5 +1,32 @@
+import Navbar from '../../components/common/Navbar'
+import Footer from '../../components/common/Footer'
+
 function Blog() {
+  const productItems = [
+    { key: 'model-gallery', label: 'Model Gallery' },
+    { key: 'on-model', label: 'On Model' },
+    { key: 'flat-lay', label: 'Flat Lay' },
+    { key: 'mannequin', label: 'Mannequin' },
+    { key: 'video', label: 'Video' },
+  ]
+
+  const solutionItems = [
+    { key: 'cut-costs', label: 'Cut Costs' },
+    { key: 'market-faster', label: 'Market Faster' },
+    { key: 'editorials', label: 'Editorials' },
+    { key: 'diversity', label: 'Diversity' },
+  ]
+
+  const resourceItems = [
+    { key: 'help-center', label: 'Help Center' },
+    { key: 'blog', label: 'Blog' },
+    { key: 'case-studies', label: 'Case Studies' },
+    { key: 'faqs', label: 'FAQs' },
+  ]
+
   return (
+    <>
+      <Navbar productItems={productItems} solutionItems={solutionItems} resourceItems={resourceItems} />
     <section className="resource-section">
       <div className="botika-section-header">
         <span className="botika-badge-pill">RESOURCE</span>
@@ -29,6 +56,8 @@ function Blog() {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   )
 }
 

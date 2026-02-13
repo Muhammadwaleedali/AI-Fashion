@@ -1,9 +1,33 @@
 import { useState } from 'react'
+import Navbar from '../../components/common/Navbar'
+import Footer from '../../components/common/Footer'
 import '../../styles/ModelGallery.css'
 
 function ModelGallery() {
   const [activeTab, setActiveTab] = useState('women')
   const [expandedFaq, setExpandedFaq] = useState(null)
+
+  const productItems = [
+    { key: 'model-gallery', label: 'Model gallery' },
+    { key: 'on-model', label: 'On model' },
+    { key: 'flat-lay', label: 'Flat lay' },
+    { key: 'mannequin', label: 'Mannequin' },
+    { key: 'video', label: 'Video' },
+  ]
+
+  const solutionItems = [
+    { key: 'cut-costs', label: 'Cut production costs' },
+    { key: 'market-faster', label: 'Get to market faster' },
+    { key: 'editorials', label: 'Create editorials' },
+    { key: 'diversity', label: 'Increase diversity' },
+  ]
+
+  const resourceItems = [
+    { key: 'help-center', label: 'Help center' },
+    { key: 'blog', label: 'Blog' },
+    { key: 'case-studies', label: 'Case studies' },
+    { key: 'faqs', label: 'FAQs' },
+  ]
 
   const womenModels = [
     { id: 1, name: 'Yao Jin', image: 'https://picsum.photos/seed/yaojin/300/400' },
@@ -32,6 +56,7 @@ function ModelGallery() {
 
   return (
     <div className="model-gallery-page">
+      <Navbar productItems={productItems} solutionItems={solutionItems} resourceItems={resourceItems} />
       {/* Hero Header */}
       <section className="gallery-hero">
         <h1>Your search for AI fashion models ends here</h1>
@@ -119,6 +144,7 @@ function ModelGallery() {
           ))}
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

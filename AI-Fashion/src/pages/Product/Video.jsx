@@ -1,8 +1,32 @@
 import { useState } from 'react'
+import Navbar from '../../components/common/Navbar'
+import Footer from '../../components/common/Footer'
 import '../../styles/Video.css'
 
 function Video() {
   const [carouselIndex, setCarouselIndex] = useState(2)
+
+  const productItems = [
+    { key: 'model-gallery', label: 'Model Gallery' },
+    { key: 'on-model', label: 'On Model' },
+    { key: 'flat-lay', label: 'Flat Lay' },
+    { key: 'mannequin', label: 'Mannequin' },
+    { key: 'video', label: 'Video' },
+  ]
+
+  const solutionItems = [
+    { key: 'cut-costs', label: 'Cut Costs' },
+    { key: 'market-faster', label: 'Market Faster' },
+    { key: 'editorials', label: 'Editorials' },
+    { key: 'diversity', label: 'Diversity' },
+  ]
+
+  const resourceItems = [
+    { key: 'help-center', label: 'Help Center' },
+    { key: 'blog', label: 'Blog' },
+    { key: 'case-studies', label: 'Case Studies' },
+    { key: 'faqs', label: 'FAQs' },
+  ]
 
   const videoExamples = [
     'https://picsum.photos/seed/video1/300/400',
@@ -28,7 +52,9 @@ function Video() {
   }
 
   return (
-    <div className="video-page">
+    <>
+      <Navbar productItems={productItems} solutionItems={solutionItems} resourceItems={resourceItems} />
+      <div className="video-page">
       {/* Hero Section */}
       <section className="video-hero">
         <div className="video-hero-content">
@@ -166,6 +192,8 @@ function Video() {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   )
 }
 

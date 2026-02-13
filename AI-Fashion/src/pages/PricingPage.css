@@ -1,0 +1,268 @@
+.pricing-page {
+  background: #f5f5f5;
+}
+
+/* Hero Section */
+.pricing-hero {
+  background: #fff;
+  padding: 100px 20px 80px;
+  text-align: center;
+}
+
+.pricing-hero-content h1 {
+  font-size: 56px;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.pricing-hero-content p {
+  font-size: 20px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Pricing Section */
+.pricing-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 32px;
+  border: 2px solid #e8e8e8;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #2d2d2d;
+}
+
+.pricing-card.featured {
+  border: 2px solid #2d2d2d;
+  background: #2d2d2d;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-8px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2d2d2d;
+  color: #fff;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.pricing-card.featured .popular-badge {
+  background: #fff;
+  color: #2d2d2d;
+}
+
+.pricing-card-header {
+  margin-bottom: 24px;
+}
+
+.pricing-card-header h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin-bottom: 8px;
+}
+
+.pricing-card.featured .pricing-card-header h3 {
+  color: #fff;
+}
+
+.pricing-desc {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.pricing-card.featured .pricing-desc {
+  color: #ccc;
+}
+
+.pricing-price {
+  margin-bottom: 32px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.pricing-price .currency {
+  font-size: 24px;
+  color: #666;
+  font-weight: 500;
+}
+
+.pricing-card.featured .pricing-price .currency {
+  color: #ccc;
+}
+
+.pricing-price .amount {
+  font-size: 56px;
+  font-weight: 700;
+  color: #2d2d2d;
+  line-height: 1;
+}
+
+.pricing-card.featured .pricing-price .amount {
+  color: #fff;
+}
+
+.pricing-price .amount.custom {
+  font-size: 40px;
+}
+
+.pricing-price .period {
+  font-size: 18px;
+  color: #888;
+  font-weight: 400;
+}
+
+.pricing-card.featured .pricing-price .period {
+  color: #ccc;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+
+.pricing-features li {
+  padding: 12px 0;
+  font-size: 15px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pricing-card.featured .pricing-features li {
+  color: #e8e8e8;
+}
+
+.pricing-features .check {
+  color: #2d2d2d;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.pricing-card.featured .pricing-features .check {
+  color: #fff;
+}
+
+.pricing-btn {
+  width: 100%;
+  padding: 16px 32px;
+  background: #2d2d2d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pricing-btn:hover {
+  background: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.pricing-btn.featured-btn {
+  background: #fff;
+  color: #2d2d2d;
+}
+
+.pricing-btn.featured-btn:hover {
+  background: #f5f5f5;
+}
+
+/* Stats Section */
+.pricing-stats {
+  background: #fff;
+  padding: 80px 20px;
+  margin: 40px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stat-item h3 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin-bottom: 8px;
+}
+
+.stat-item p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing-hero-content h1 {
+    font-size: 36px;
+  }
+
+  .pricing-hero-content p {
+    font-size: 16px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+
+  .pricing-card.featured:hover {
+    transform: translateY(-8px);
+  }
+
+  .pricing-price .amount {
+    font-size: 42px;
+  }
+
+  .stat-item h3 {
+    font-size: 36px;
+  }
+}

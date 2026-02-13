@@ -1,8 +1,32 @@
 import { useState } from 'react'
+import Navbar from '../../components/common/Navbar'
+import Footer from '../../components/common/Footer'
 import '../../styles/FlatLay.css'
 
 function FlatLay() {
   const [carouselIndex, setCarouselIndex] = useState(2)
+
+  const productItems = [
+    { key: 'model-gallery', label: 'Model Gallery' },
+    { key: 'on-model', label: 'On Model' },
+    { key: 'flat-lay', label: 'Flat Lay' },
+    { key: 'mannequin', label: 'Mannequin' },
+    { key: 'video', label: 'Video' },
+  ]
+
+  const solutionItems = [
+    { key: 'cut-costs', label: 'Cut Costs' },
+    { key: 'market-faster', label: 'Market Faster' },
+    { key: 'editorials', label: 'Editorials' },
+    { key: 'diversity', label: 'Diversity' },
+  ]
+
+  const resourceItems = [
+    { key: 'help-center', label: 'Help Center' },
+    { key: 'blog', label: 'Blog' },
+    { key: 'case-studies', label: 'Case Studies' },
+    { key: 'faqs', label: 'FAQs' },
+  ]
 
   const carouselPairs = [
     { flat: 'https://picsum.photos/seed/flat_a/130/160', model: 'https://picsum.photos/seed/model_a/170/260' },
@@ -28,7 +52,9 @@ function FlatLay() {
   }
 
   return (
-    <div className="flat-lay-page">
+    <>
+      <Navbar productItems={productItems} solutionItems={solutionItems} resourceItems={resourceItems} />
+      <div className="flat-lay-page">
       {/* Hero Section */}
       <section className="flat-hero">
         <div className="flat-hero-content">
@@ -197,6 +223,8 @@ function FlatLay() {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   )
 }
 
